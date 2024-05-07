@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-
+require("./db")
 
 
 // port number
@@ -21,10 +21,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // error handling middleware
-app.use(errorHandler);
+// app.use(errorHandler);
 
 // use routes
-// app.use("/api/jobs", require("./routes/jobRouter"));
+app.use("/api", require("./routes/authRouter"));
 
 // start server
 app.listen(PORT, () =>
