@@ -25,6 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // use routes
 app.use("/api", require("./routes/authRouter"));
+app.use("/api", require("./routes/taskRouter"));
 
 // start server
 app.listen(PORT, () =>
