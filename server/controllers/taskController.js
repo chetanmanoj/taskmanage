@@ -31,4 +31,18 @@ const createTask = async (req, res) => {
   }
 };
 
-module.exports = {createTask };
+const viewTask = async (req, res) => {
+    const {userId} = req.body;
+
+    const tasks = await taskModel.find({ user: userId});
+    if (tasks.length === 0) {
+        return res.status(404).json({});
+    }
+
+    // Do something with the tasks, like returning them in the response
+    return res.json({ tasks });
+};
+
+
+
+module.exports = {createTask, viewTask, };
